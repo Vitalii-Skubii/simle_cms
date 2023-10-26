@@ -1,13 +1,12 @@
 import { lazy, Suspense } from 'react';
+import { Spinner } from './Spinner';
 
-export const LazyComponent = ({tab}) => {
-
+export const LazyComponent = ({ tab }) => {
   const MarkupComponent = lazy(() => import(`./${tab.path}`));
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-     
-      <MarkupComponent title={tab.title}/>
+    <Suspense fallback={<Spinner />}>
+      <MarkupComponent title={tab.title} />
     </Suspense>
   );
 };
